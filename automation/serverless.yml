@@ -20,6 +20,7 @@ service: automation
 provider:
   name: aws
   runtime: python2.7
+  memorySize: 128
 
 # you can overwrite defaults here
 #  stage: dev
@@ -55,11 +56,19 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    memorySize: 128
-    handler: handler.hello
+  retrieve_url:
+    handler: handler.retrieve_url
     events:
-      - http: GET hello
+      - http:
+          method: get
+          path: url
+  create_url:
+    handler: handler.create_url
+    events:
+      - http:
+          method: post
+          path: url
+          private: false
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
