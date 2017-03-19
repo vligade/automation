@@ -57,13 +57,13 @@ provider:
 
 functions:
   retrieve_url:
-    handler: handler.retrieve_url
+    handler: retrieve.url
     events:
       - http:
           method: get
           path: url
   create_url:
-    handler: handler.create_url
+    handler: create.url
     events:
       - http:
           method: post
